@@ -8,3 +8,99 @@
 7 ritardare progressivamente l'animazione delle altre 2 parole 
 */
 
+/* 1. Centra il box e applica il bordo */
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  /* Per un design reattivo e per evitare lo scrolling orizzontale */
+  margin: 0;
+  padding: 20px; /* Aggiungi un po' di padding per evitare che il contenuto tocchi i bordi su schermi piccoli */
+  box-sizing: border-box; /* Assicura che padding non aggiunga larghezza extra */
+  font-family: "Inter", sans-serif; /* Imposta il font Inter come richiesto */
+}
+
+#testoAlternato {
+  border: 5px solid #666;
+  padding: 40px 50px;
+  max-width: 80vw;
+  background: #fff;
+  border-radius: 10px; /* Bordi arrotondati */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Leggera ombra per profondità */
+}
+
+/* 2. Font e stile del testo */
+#testoAlternato p {
+  font-family: "Bree Serif", serif;
+  font-size: 3rem;
+  color: #444;
+  font-weight: bold;
+  line-height: 1.2;
+  text-align: left;
+}
+
+/* 3. Contenitore delle parole animate */
+.parole {
+  position: relative;
+  top: -5px;
+  display: inline-block;
+  font-weight: bold;
+  vertical-align: baseline;
+  white-space: nowrap;
+  min-width: 320px;
+  text-align: left;
+}
+
+/* 4. Sovrappone le 3 parole */
+.parole i {
+  position: absolute;
+  left: 0;
+  /* Ho aggiustato il 'top' in modo che le parole si allineino meglio verticalmente.
+       Potrebbe essere necessario un ulteriore piccolo aggiustamento in base alla resa esatta del font. */
+  top: -42px; /* Leggermente aggiustato per una migliore centratura verticale visiva */
+  line-height: 1.2;
+  opacity: 0;
+  color: #789;
+  font-style: normal;
+  transition: opacity 0.5s, transform 0.5s;
+  width: 100%; /* Assicura che la parola assoluta occupi tutta la larghezza del contenitore .parole */
+}
+
+/* 5-6-7. Animazione fadein-fadeout con spostamento e ritardo progressivo */
+.parole i:nth-child(1) {
+  animation: fadeinout 6s infinite;
+  z-index: 1;
+}
+.parole i:nth-child(2) {
+  animation: fadeinout 6s infinite 2s;
+  z-index: 1;
+}
+.parole i:nth-child(3) {
+  animation: fadeinout 6s infinite 4s;
+  z-index: 1;
+}
+
+@keyframes fadeinout {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
