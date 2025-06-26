@@ -1,17 +1,63 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-<meta charset="utf-8">
-<title>Esempio di lavagna con Post It</title>
-<meta name="description" content="Creazione di una lavagna con post animati al rollover">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="reset.css">
-<link rel="stylesheet" href="postit.css">
-</head>
-
-<body>
-
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Esempio di lavagna con Post It</title>
+    <meta
+      name="description"
+      content="Creazione di una lavagna con post animati al rollover"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/reset.css" />
+    <link rel="stylesheet" href="../assets/css/postit.css" />
+  </head>
+  <body>
+    <!-- Contenitore principale dei post-it: tutti e 8 i post-it in due righe da 4 -->
+    <div class="postit slide-down">
+      <div class="postit-content" id="postit-1">
+        <h2>Task #1</h2>
+        <p>Creare i postit</p>
+      </div>
+      <div class="postit-content" id="postit-2">
+        <h2>Task #2</h2>
+        <p>Colorarli</p>
+      </div>
+      <div class="postit-content" id="postit-3">
+        <h2>Task #3</h2>
+        <p>Affiancarli</p>
+      </div>
+      <div class="postit-content" id="postit-4">
+        <h2>Task #4</h2>
+        <p>Spaziarli</p>
+      </div>
+      <div class="postit-content" id="postit-5">
+        <h2>Task #5</h2>
+        <p>Ombreggiarli</p>
+      </div>
+      <div class="postit-content" id="postit-6">
+        <h2>Task #6</h2>
+        <p>Ruotarli</p>
+      </div>
+      <div class="postit-content" id="postit-7">
+        <h2>Task #7</h2>
+        <p>Animarli</p>
+      </div>
+      <div class="postit-content" id="postit-8">
+        <h2>Task #8</h2>
+        <p>Testarli</p>
+      </div>
+    </div>
+    <!-- Bottone per passare all'esercizio successivo -->
+    <button
+      class="postit-button slide-down"
+      onclick="window.location.href='./frase.html'"
+    >
+      Esercizio Successivo
+    </button>
+  </body>
 </html>

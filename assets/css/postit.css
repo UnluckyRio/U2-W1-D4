@@ -1,0 +1,191 @@
+/* Imposta lo sfondo della pagina */
+body {
+  background: #666;
+  font-family: "Indie Flower", cursive; /* Font stile scritto a mano */
+  /* Centra tutto il contenuto della pagina sia verticalmente che orizzontalmente */
+  min-height: 100vh; /* Occupa almeno tutta l'altezza della viewport */
+  display: flex; /* Attiva Flexbox */
+  flex-direction: column; /* Dispone gli elementi in colonna */
+  justify-content: center; /* Centra verticalmente */
+  align-items: center; /* Centra orizzontalmente */
+}
+
+/* Contenitore dei post-it */
+.postit {
+  display: grid;
+  grid-template-columns: repeat(4, 300px); /* 4 colonne larghe come i post-it */
+  grid-template-rows: repeat(2, auto);
+  gap: 70px 70px;
+  width: auto;
+  max-width: none;
+  padding: 0;
+  box-sizing: border-box;
+  margin: 40px auto;
+  justify-items: center;
+  align-items: center;
+}
+
+/* Stile base dei post-it */
+.postit-content {
+  width: 300px;
+  height: 220px;
+  background: #ffffcc; /* Colore base giallo */
+  box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.3); /* Ombra */
+  border-radius: 6px;
+  padding: 32px 24px 16px 24px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra verticalmente il contenuto */
+  align-items: center; /* Centra orizzontalmente il contenuto */
+  transition: transform 0.2s, box-shadow 0.2s; /* Animazione al rollover */
+  font-size: 1.3rem;
+  animation: fall-down 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+
+/* Colori diversi per ogni post-it */
+#postit-1,
+#postit-5,
+#postit-7 {
+  background: linear-gradient(to bottom, #ffffcc 80%, #e6e6b3 100%);
+}
+#postit-2,
+#postit-4,
+#postit-8 {
+  background: linear-gradient(to bottom, #ccffcc 80%, #b3e6b3 100%);
+}
+#postit-3,
+#postit-6 {
+  background: linear-gradient(to bottom, #ccccff 80%, #b3b3e6 100%);
+}
+
+/* Rotazione per effetto disordinato */
+#postit-1 {
+  transform: rotate(-5deg);
+}
+#postit-2 {
+  transform: rotate(3deg);
+}
+#postit-3 {
+  transform: rotate(-2deg);
+}
+#postit-4 {
+  transform: rotate(6deg);
+}
+#postit-5 {
+  transform: rotate(-4deg);
+}
+#postit-6 {
+  transform: rotate(4deg);
+}
+#postit-7 {
+  transform: rotate(-3deg);
+}
+#postit-8 {
+  transform: rotate(2deg);
+}
+
+/* Al passaggio del mouse il post-it si solleva, si ingrandisce e si raddrizza (rotazione a 0 gradi) */
+.postit-content:hover {
+  transform: scale(1.1) translateY(-20px) rotate(0deg) !important; /* Ingrandisce, solleva e raddrizza */
+  box-shadow: 16px 32px 48px rgba(0, 0, 0, 0.5); /* Ombra più marcata */
+  z-index: 2;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s;
+}
+
+/* Titolo del post-it */
+.postit-content h2 {
+  margin: 0 0 16px 0;
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+/* Testo del post-it */
+.postit-content p {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+/* Bottone in stile post-it */
+.postit-button {
+  width: 300px;
+  height: 70px;
+  background: linear-gradient(
+    to bottom,
+    #ffffcc 80%,
+    #e6e6b3 100%
+  ); /* Colore post-it giallo */
+  box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.3); /* Ombra come i post-it */
+  border-radius: 6px;
+  border: none;
+  font-family: "Indie Flower", cursive;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin: 40px auto 0 auto;
+  display: block;
+  cursor: pointer;
+  transform: rotate(-3deg); /* Leggera rotazione */
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: fall-down 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 1.1s; /* Il bottone appare dopo i post-it */
+  opacity: 0;
+}
+
+/* Effetto hover per il bottone */
+.postit-button:hover {
+  transform: scale(1.08) translateY(-10px) rotate(0deg);
+  box-shadow: 16px 32px 48px rgba(0, 0, 0, 0.5);
+  color: #000;
+}
+
+/* Animazione di caduta dall'alto per i post-it all'apertura */
+@keyframes fall-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-200px) scale(0.8) rotate(var(--rotate, 0deg)); /* Parte dall'alto e più piccolo */
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(20px) scale(1.05) rotate(var(--rotate, 0deg)); /* Rimbalzo verso il basso */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(var(--rotate, 0deg)); /* Posizione finale */
+  }
+}
+
+/* Effetto a cascata: ogni post-it ha un delay diverso */
+#postit-1 {
+  animation-delay: 0.05s;
+  --rotate: -5deg;
+}
+#postit-2 {
+  animation-delay: 0.15s;
+  --rotate: 3deg;
+}
+#postit-3 {
+  animation-delay: 0.25s;
+  --rotate: -2deg;
+}
+#postit-4 {
+  animation-delay: 0.35s;
+  --rotate: 6deg;
+}
+#postit-5 {
+  animation-delay: 0.45s;
+  --rotate: -4deg;
+}
+#postit-6 {
+  animation-delay: 0.55s;
+  --rotate: 4deg;
+}
+#postit-7 {
+  animation-delay: 0.65s;
+  --rotate: -3deg;
+}
+#postit-8 {
+  animation-delay: 0.75s;
+  --rotate: 2deg;
+}
